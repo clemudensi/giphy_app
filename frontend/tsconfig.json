@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "jsxImportSource": "@emotion/react", // for the css prop
     "target": "es5",
     "baseUrl": "src",
     "lib": [

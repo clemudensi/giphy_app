@@ -1,10 +1,5 @@
-import styled, { StyledComponentBase, keyframes } from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import tw from 'twin.macro';
-
-interface GroupProps extends StyledComponentBase<any, Record<string, unknown>> {
-	Child1?: any;
-	Child2?: any;
-}
 
 const BackGroundWhite = tw.div`
 	bg-white
@@ -37,14 +32,14 @@ const GifGrid = styled.div`
 		grid-cols-1
 		gap-y-1
 		gap-x-1
-		sm:grid-cols-3
-		lg:grid-cols-6
+		sm:grid-cols-4
+		lg:grid-cols-5
 		xl:gap-x-2
 		xl:gap-y-2
 	`}
 `;
 
-const CardGroup: GroupProps = styled.div`
+const CardGroup = styled.div`
 	${tw`
 		relative
 	`}
@@ -61,7 +56,7 @@ const ImageWrapper = styled.img`
 	`}
 `;
 
-CardGroup.Child1 = styled.div`
+const CardGroupChild1 = styled.div`
 	${tw`
 		relative w-full
 		h-36
@@ -76,7 +71,7 @@ CardGroup.Child1 = styled.div`
 	`}
 `;
 
-CardGroup.Child2 = styled.figcaption`
+const CardGroupChild2 = styled.figcaption`
 	${tw`
 		absolute
 		text-lg
@@ -166,6 +161,8 @@ const Spinner = styled.div`
 export {
 	BackGroundWhite,
 	CardGroup,
+	CardGroupChild1,
+	CardGroupChild2,
 	Container,
 	ContainerPositioned,
 	ContainerEnd,

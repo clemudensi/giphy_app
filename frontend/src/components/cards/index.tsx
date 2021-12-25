@@ -1,23 +1,27 @@
 import { VFC } from 'react';
 import {
     CardGroup,
+    CardGroupChild1,
+    CardGroupChild2,
     ImageWrapper,
 } from 'components';
 
 interface ImageProps {
     image: string;
     title: string;
+    ref?: React.RefObject<HTMLDivElement>;
 }
 
-const ImageCard: VFC<ImageProps> = ({ image, title }) => {
+const ImageCard: VFC<ImageProps> = (props) => {
+    const { image, title } = props;
     return (
-        <CardGroup>
-            <CardGroup.Child1>
+        <CardGroup {...props}>
+            <CardGroupChild1>
                 <ImageWrapper src={image} alt={`${title}`} />
-            </CardGroup.Child1>
-            <CardGroup.Child2>
+            </CardGroupChild1>
+            <CardGroupChild2>
                 {title}
-            </CardGroup.Child2>
+            </CardGroupChild2>
         </CardGroup>
     )
 };

@@ -45,15 +45,16 @@ const CardGroup = styled.div`
 	`}
 `;
 
-const ImageWrapper = styled.img`
+const ImageWrapper = styled.img<{cursor?: string}>`
 	${tw`
 		w-full
 		h-full
 		object-center
 		object-cover
 		lg:w-full
-		lg:h-full
+		lg:h-80
 	`}
+	cursor: ${(props) => props.cursor ? props.cursor : 'default'};
 `;
 
 const CardGroupChild1 = styled.div`
@@ -158,6 +159,35 @@ const Spinner = styled.div`
 	transform: translateZ(0);
 `;
 
+const ImageDetails = styled.div<{width?: string;}>`
+	width: ${(props) => props.width ? props.width : '100%'}
+`;
+
+const TitleSmall = styled.div`
+	${tw`
+		text-base font-medium text-gray-900
+	`}
+`;
+
+const TextSmall = styled.div`
+	${tw`
+		text-base text-gray-500
+	`}
+`;
+
+const SectionContainer = styled.div<{margin?: string}>`
+	margin: ${(props) => props.margin ? props.margin : '1rem'}
+`;
+
+const NotFoundHeader = styled.h2<{color?: string;}>`
+	${tw`
+		flex
+		justify-center
+		text-2xl font-medium leading-7 text-gray-900 sm:text-3xl sm:truncate
+	`}
+	color: ${props => props.color ? props.color : 'black'}
+`;
+
 export {
 	BackGroundWhite,
 	CardGroup,
@@ -169,7 +199,12 @@ export {
 	ContainerFlex,
 	GifGrid,
 	Header,
+	ImageDetails,
 	ImageWrapper,
+	NotFoundHeader,
+	SectionContainer,
 	Spinner,
-	SvgContainer
+	SvgContainer,
+	TextSmall,
+	TitleSmall
 };

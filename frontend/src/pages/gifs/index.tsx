@@ -1,16 +1,15 @@
 import { VFC, useCallback, useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from 'store';
-import { BackGroundWhite, Container, Spinner } from 'components';
+import { BackGroundWhite, Container, NotFoundHeader, Spinner } from 'components';
 import { trendingGifs } from 'features';
 import { API_PARAMS } from 'consts';
 import { useDebounced } from 'hooks';
 import { SearchHeader } from './search-header';
-import { GifList } from './gif-list';
+import { MemoizeGifList } from './gif-list';
 
 const Gifs: VFC = () => {
     const [state, setState] = useState({
-        focused: false,
         inputValue: '',
     });
 
@@ -27,29 +26,28 @@ const Gifs: VFC = () => {
     };
 
     const handleCancelSearch = useCallback((): void => {
-        setState(prevState => ({
-            ...prevState,
-            focused: false,
-            inputValue: ''
-        }));
-        searchInputRef?.current?.blur();
         setSearch(!search);
+        setState({
+            inputValue: ''
+        });
     }, [search]);
 
     const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setState(prevState => ({
-            ...prevState,
+        setState({
             inputValue: event.target.value
-        }))
+        })
     };
 
     const handleClearText = useCallback((): void => {
-        setState({
-            focused: true,
-            inputValue: ''
-        });
+        setState({inputValue: ''});
+
         searchInputRef?.current?.focus();
     }, []);
+
+    //handles input focus on search
+    useEffect(() => {
+        search && searchInputRef?.current?.focus();
+    }, [search]);
 
     useEffect(() => {
         const searchGifReqParams = {
@@ -83,13 +81,14 @@ const Gifs: VFC = () => {
                     onChange={onChange}
                     search={search}
                     state={state}
+                    ref={searchInputRef}
                 />
                 {
                     (gifs?.data?.length && !loadingGifList) ?
-                    <GifList
+                    <MemoizeGifList
                         gifs={gifs}
                         search={search}
-                    /> : <Spinner />
+                    /> : (loadingGifList ? <Spinner /> : <NotFoundHeader>No Gifs Found</NotFoundHeader>)
                 }
             </Container>
         </BackGroundWhite>

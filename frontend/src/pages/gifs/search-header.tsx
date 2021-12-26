@@ -1,4 +1,4 @@
-import React, { VFC } from 'react';
+import React, { forwardRef } from 'react';
 import {
     CancelButton,
     ContainerFlex,
@@ -17,27 +17,28 @@ interface SearchHeaderProps {
     search: boolean;
     state: {
         inputValue: string;
-        focused: boolean;
+        focused?: boolean;
     }
 }
 
-const SearchHeader: VFC<SearchHeaderProps> = ({
-    handleCancelSearch,
-    handleClearText,
-    handleSearch,
-    inputDebounced,
-    onChange,
-    search,
-    state
-}) => {
-    return(
+const SearchHeader = forwardRef<HTMLInputElement, SearchHeaderProps>((_props, ref) => {
+    const {
+        handleCancelSearch,
+        handleClearText,
+        handleSearch,
+        inputDebounced,
+        onChange,
+        search,
+        state
+    } = _props
+    return (
         <ContainerFlex>
             <ContainerPositioned position='flex-start'>
                 <Header>{inputDebounced.length ? 'Searched Gif Images' : 'Trending Gifs Images'}</Header>
             </ContainerPositioned>
             {search &&
                 <ContainerPositioned position='center'>
-                    <SearchBar inputValue={state?.inputValue} onChange={onChange} onClick={handleClearText} />
+                    <SearchBar inputValue={state?.inputValue} onChange={onChange} onClick={handleClearText} ref={ref}/>
                 </ContainerPositioned>
             }
             {search &&
@@ -48,6 +49,6 @@ const SearchHeader: VFC<SearchHeaderProps> = ({
             {!search && <ContainerPositioned position='flex-end'><SearchIcon onClick={handleSearch} /></ContainerPositioned>}
         </ContainerFlex>
     )
-};
+});
 
 export { SearchHeader };

@@ -8,16 +8,17 @@ import {
 
 interface ImageProps {
     image: string;
-    title: string;
     ref?: React.RefObject<HTMLDivElement>;
+    title: string;
+    onClick?: () => void;
 }
 
 const ImageCard: VFC<ImageProps> = (props) => {
-    const { image, title } = props;
+    const { image, title, onClick } = props;
     return (
-        <CardGroup {...props}>
+        <CardGroup {...props} onClick={onClick}>
             <CardGroupChild1>
-                <ImageWrapper src={image} alt={`${title}`} />
+                <ImageWrapper src={image} alt={`${title}`} cursor='pointer' />
             </CardGroupChild1>
             <CardGroupChild2>
                 {title}

@@ -1,7 +1,8 @@
 {
   "compilerOptions": {
-    "jsxImportSource": "@emotion/react", // for the css prop
+    "types": ["@emotion/react/types/css-prop"],
     "target": "es5",
+    "downlevelIteration": true,
     "baseUrl": "src",
     "lib": [
       "dom",

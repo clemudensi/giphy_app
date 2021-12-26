@@ -29,7 +29,7 @@ const SearchIconContainer = styled.div`
 
 const SearchCancelContainer = styled.div`
     ${tw`
-        absolute inset-y-0 right-0 flex items-center  px-3
+        absolute inset-y-0 right-0 flex items-center px-3
     `}
 `;
 

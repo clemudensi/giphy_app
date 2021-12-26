@@ -1,4 +1,4 @@
-import { VFC } from 'react';
+import { forwardRef } from 'react';
 import {
     SearchCancelContainer,
     SearchContainer,
@@ -14,14 +14,20 @@ interface SearchBarProps {
     onClick: () => void;
 }
 
-const SearchBar: VFC<SearchBarProps> = ({ inputValue, onChange, onClick }) => {
+const SearchBar = forwardRef<HTMLInputElement, SearchBarProps>((_props, ref) => {
+    const {
+        inputValue,
+        onChange,
+        onClick
+    } = _props;
+
     return(
         <SearchContainer>
-            <SearchInput onChange={onChange} value={inputValue} />
+            <SearchInput onChange={onChange} value={inputValue} ref={ref} />
             <SearchIconContainer><SearchIcon /></SearchIconContainer>
             <SearchCancelContainer><CancelIcon onClick={onClick} /></SearchCancelContainer>
         </SearchContainer>
     )
-};
+});
 
 export { SearchBar };

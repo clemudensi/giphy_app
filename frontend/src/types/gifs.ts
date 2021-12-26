@@ -13,7 +13,7 @@ type AnalyticsProps = {
 type ImagesProps = {
     height: string;
     width: string;
-    size: string;
+    size?: string;
     url: string;
     mp4_size?: string;
     mp4?: string;
@@ -49,9 +49,22 @@ interface GifProps {
         fixed_width: ImagesProps;
         fixed_width_downsampled?: ImagesProps;
         fixed_width_small?: ImagesProps;
+        '480w_still'?: ImagesProps;
     };
     analytics_response_payload: string;
     analytics: AnalyticsProps;
+}
+
+
+export enum ImagesKey {
+    original = 'original',
+    fixed_height = 'fixed_height',
+    fixed_height_downsampled = 'fixed_height_downsampled',
+    fixed_height_small = 'fixed_height_small',
+    fixed_width = 'fixed_width',
+    fixed_width_downsampled = 'fixed_width_downsampled',
+    fixed_width_small = 'fixed_width_small',
+    '480w_still' = '480w_still'
 }
 
 export type { GifProps };

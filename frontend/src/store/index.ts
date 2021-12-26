@@ -1,9 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { gifImageReducer, trendingGifReducer } from 'features';
+import { trendingGifReducer } from 'features';
 
 export const store = configureStore({
     reducer: {
-        gifImage: gifImageReducer,
         gifList: trendingGifReducer
     }
 });

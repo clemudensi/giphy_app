@@ -14,7 +14,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 Due to time constraints the app would require the following, improvements
 
 ### Improvements
-* Adding unit test for utility functions and and gif container component, etc.
+* Adding unit test for gif-container, components, etc.
 * Implement ErrorBoundary for application
 * Replacing carousel package with a custom page slider
 

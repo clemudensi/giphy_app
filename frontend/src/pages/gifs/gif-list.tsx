@@ -1,8 +1,7 @@
 import { VFC, memo, useEffect, useMemo, useState } from 'react';
-import { GifGrid, ImageCard, Modal } from 'components';
+import { GifDetail, GifGrid, ImageCard, Modal } from 'components';
 import { ApiResponseArray, GifProps } from 'types';
 import { useInView } from 'react-intersection-observer';
-import { GifDetail } from 'components/cards/card-details';
 import { removeDuplicates } from 'utils';
 
 interface GifListProps {

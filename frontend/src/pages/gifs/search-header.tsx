@@ -34,7 +34,7 @@ const SearchHeader = forwardRef<HTMLInputElement, SearchHeaderProps>((_props, re
     return (
         <ContainerFlex>
             <ContainerPositioned position='flex-start'>
-                <Header>{inputDebounced.length ? 'Searched Gif Images' : 'Trending Gifs Images'}</Header>
+                <Header data-testid="gif-header">{inputDebounced.length ? 'Searched Gif Images' : 'Trending Gif Images'}</Header>
             </ContainerPositioned>
             {search &&
                 <ContainerPositioned position='center'>
@@ -43,10 +43,10 @@ const SearchHeader = forwardRef<HTMLInputElement, SearchHeaderProps>((_props, re
             }
             {search &&
                 <ContainerPositioned position='flex-end'>
-                    <CancelButton onClick={handleCancelSearch}>Cancel</CancelButton>
+                    <CancelButton onClick={handleCancelSearch} data-testid="cancel-search">Cancel</CancelButton>
                 </ContainerPositioned>
             }
-            {!search && <ContainerPositioned position='flex-end'><SearchIcon onClick={handleSearch} /></ContainerPositioned>}
+            {!search && <ContainerPositioned position='flex-end'><SearchIcon onClick={handleSearch} data-testid="search-icon" /></ContainerPositioned>}
         </ContainerFlex>
     )
 });

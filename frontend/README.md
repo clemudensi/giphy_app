@@ -31,5 +31,6 @@ Due to time constraints the app would require the following, improvements
 * Redux-ToolKit is used for state management due to simplicity and scalability.
 * Alternatives include creating custom hooks.
 
-### side note
+### side notes
 The API-key is stored in `.env` file which has been deliberately omitted from `.gitignore`
+It took approx. 4 days to complete this task

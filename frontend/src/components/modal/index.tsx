@@ -33,7 +33,7 @@ const Modal: FC<ModalProps> = ({
             {ModalHandle}
             {
                 (modalId === imageId) && showModal &&
-                <ModalContainer>
+                <ModalContainer data-testid="gif-modal">
                     <ModalSubContainer>
                         <ModalContent>
                             <ModalHeaderContainer>
@@ -41,10 +41,15 @@ const Modal: FC<ModalProps> = ({
                                     {title}
                                 </ModalHeader>
                                 <CloseButton>
-                                    <CancelIcon onClick={handleCloseModal} height={20} width={20} />
+                                    <CancelIcon
+                                        onClick={handleCloseModal}
+                                        height={20}
+                                        width={20}
+                                        data-testid="close-modal"
+                                    />
                                 </CloseButton>
                             </ModalHeaderContainer>
-                            <ModalBody>
+                            <ModalBody data-testid="modal-content">
                                 {children}
                             </ModalBody>
                         </ModalContent>

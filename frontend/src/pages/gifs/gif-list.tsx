@@ -14,6 +14,7 @@ const GifList: VFC<GifListProps> = ({
     gifs,
     search,
 }) => {
+    // removes occasional duplicates from gifs
     const uniqGifs = useMemo(() => removeDuplicates(gifs.data, 'id'), [gifs.data]);
 
     const initialState = uniqGifs.slice(0, 20)
@@ -50,7 +51,7 @@ const GifList: VFC<GifListProps> = ({
     }, [gifs.data, inView]);
 
     return (
-        <GifGrid>
+        <GifGrid data-testid="gif-images">
             {
                 !search ?
                 uniqGifs.map(gif =>
@@ -62,6 +63,7 @@ const GifList: VFC<GifListProps> = ({
                                 image={gif?.images.fixed_height?.url}
                                 title={gif?.title} key={gif?.id}
                                 onClick={() => handleShowModal(gif?.id)}
+                                data-testid="trending-gif"
                             />
                         }
                         modalId={gif?.id}
@@ -86,6 +88,7 @@ const GifList: VFC<GifListProps> = ({
                                             image={gif?.images['480w_still']?.url ?? gif?.images.fixed_height?.url}
                                             title={gif?.title}
                                             onClick={() => handleShowModal(gif?.id)}
+                                            data-testid="search-gif-image"
                                         />
                                     </div>
                                 }
@@ -108,6 +111,7 @@ const GifList: VFC<GifListProps> = ({
                                         image={gif?.images['480w_still']?.url ?? gif?.images.fixed_height?.url}
                                         title={gif?.title} key={gif?.id}
                                         onClick={() => handleShowModal(gif?.id)}
+                                        data-testid="search-gif-image"
                                     />
                                 }
                                 modalId={gif?.id}

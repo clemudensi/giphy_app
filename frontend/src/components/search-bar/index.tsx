@@ -23,9 +23,17 @@ const SearchBar = forwardRef<HTMLInputElement, SearchBarProps>((_props, ref) => 
 
     return(
         <SearchContainer>
-            <SearchInput onChange={onChange} value={inputValue} ref={ref} />
+            <SearchInput
+                onChange={onChange}
+                value={inputValue}
+                ref={ref}
+                name="search-input"
+                data-testid="search-input"
+            />
             <SearchIconContainer><SearchIcon /></SearchIconContainer>
-            <SearchCancelContainer><CancelIcon onClick={onClick} /></SearchCancelContainer>
+            <SearchCancelContainer>
+                <CancelIcon onClick={onClick} data-testid="clear-text" />
+            </SearchCancelContainer>
         </SearchContainer>
     )
 });

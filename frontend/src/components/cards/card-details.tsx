@@ -25,17 +25,17 @@ const GifDetail: VFC<GifDetailProps> = ({ image }) => {
 
     return (
         <>
-            <Slider {...settings}>
+            <Slider {...settings} data-testid="slider">
                 {
                     Object.values(ImagesKey).map((key) =>
                         <div key={key}>
-                            <ImageWrapper src={image?.images[key]?.url} />
+                            <ImageWrapper src={image?.images[key]?.url} data-testid={`slider-image-${key}`} />
                             <SectionContainer>
                                 <ContainerFlex>
                                     <ImageDetails width='25%'>
                                         <TitleSmall>Title</TitleSmall>
                                     </ImageDetails>
-                                    <ImageDetails width='70%'>
+                                    <ImageDetails width='70%' data-testid="image-title">
                                         <TextSmall>{image?.title}</TextSmall>
                                     </ImageDetails>
                                 </ContainerFlex>
@@ -43,7 +43,7 @@ const GifDetail: VFC<GifDetailProps> = ({ image }) => {
                                     <ImageDetails width='25%'>
                                         <TitleSmall>Image Type</TitleSmall>
                                     </ImageDetails>
-                                    <ImageDetails width='70%'>
+                                    <ImageDetails width='70%' data-testid="image-type">
                                         <TextSmall>{key}</TextSmall>
                                     </ImageDetails>
                                 </ContainerFlex>

@@ -27,8 +27,8 @@ const SearchBar = forwardRef<HTMLInputElement, SearchBarProps>((_props, ref) => 
                 onChange={onChange}
                 value={inputValue}
                 ref={ref}
-                name="search-input"
                 data-testid="search-input"
+                placeholder='Search for gifs'
             />
             <SearchIconContainer><SearchIcon /></SearchIconContainer>
             <SearchCancelContainer>

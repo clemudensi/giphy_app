@@ -77,7 +77,6 @@ const Gifs: VFC = () => {
                     handleCancelSearch={handleCancelSearch}
                     handleClearText={handleClearText}
                     handleSearch={handleSearch}
-                    inputDebounced={inputDebounced}
                     onChange={onChange}
                     search={search}
                     state={state}

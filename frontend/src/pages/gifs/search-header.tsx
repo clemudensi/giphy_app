@@ -12,7 +12,6 @@ interface SearchHeaderProps {
     handleCancelSearch: () => void;
     handleClearText: () => void;
     handleSearch: () => void;
-    inputDebounced: string;
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
     search: boolean;
     state: {
@@ -26,15 +25,15 @@ const SearchHeader = forwardRef<HTMLInputElement, SearchHeaderProps>((_props, re
         handleCancelSearch,
         handleClearText,
         handleSearch,
-        inputDebounced,
         onChange,
         search,
         state
     } = _props
+
     return (
         <ContainerFlex>
             <ContainerPositioned position='flex-start'>
-                <Header data-testid="gif-header">{inputDebounced.length ? 'Searched Gif Images' : 'Trending Gif Images'}</Header>
+                <Header data-testid="gif-header">{state?.inputValue.length ? 'Searched Gif Images' : 'Trending Gif Images'}</Header>
             </ContainerPositioned>
             {search &&
                 <ContainerPositioned position='center'>
